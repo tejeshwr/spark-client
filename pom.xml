@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>crs</groupId>
+	<artifactId>spark-client</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+
+	<name>spark-client</name>
+	<url>http://maven.apache.org</url>
+	<description>Spark Client</description>
+	<profiles>
+		<profile>
+			<id>mapr</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>hadoop.distro</name>
+					<value>mapr</value>
+				</property>
+			</activation>
+			<repositories>
+				<repository>
+					<id>mapr-releases</id>
+					<url>http://repository.mapr.com/maven/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+				</repository>
+
+			</repositories>
+			<properties>
+				<hadoop.version>2.7.0-mapr-1707</hadoop.version>
+				<hbase.version>1.1.8-mapr-1710</hbase.version>
+				<spark.version>2.1.0-mapr-1703</spark.version>
+			</properties>
+
+		</profile>
+	</profiles>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-core_2.11</artifactId>
+			<version>${spark.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-sql_2.11</artifactId>
+			<version>${spark.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-yarn_2.11</artifactId>
+			<version>${spark.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!--  POWER MOCKITO DEPENDENCIES START -->
+		
+			<dependency>
+    				<groupId>org.powermock</groupId>
+    				<artifactId>powermock-module-junit4</artifactId>
+    				<version>1.7.4</version>
+    				<scope>test</scope>
+    			</dependency>
+    			<dependency>
+    				<groupId>org.powermock</groupId>
+    				<artifactId>powermock-api-mockito</artifactId>
+    				<version>1.7.4</version>
+    				<scope>test</scope>
+    			</dependency>
+    			<dependency>
+    				<groupId>org.powermock</groupId>
+    				<artifactId>powermock-core</artifactId>
+    				<version>1.7.4</version>
+    			</dependency>
+    			<dependency>
+    				<groupId>org.powermock</groupId>
+    				<artifactId>powermock-module-junit4-common</artifactId>
+    				<version>1.7.4</version>
+    			</dependency>
+    			<dependency>
+    				<groupId>org.powermock</groupId>
+    				<artifactId>powermock-api-support</artifactId>
+    				<version>1.7.4</version>
+    			</dependency>
+    	
+    	<!--  POWER MOCKITO DEPENDENCIES END -->
+    	<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+		</dependency>
+    	
+	</dependencies>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<verbose>true</verbose>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
