@@ -8,46 +8,23 @@
 	<packaging>jar</packaging>
 
 	<name>spark-client</name>
-	<url>http://maven.apache.org</url>
-	<description>Spark Client</description>
-	<profiles>
-		<profile>
-			<id>mapr</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-				<property>
-					<name>hadoop.distro</name>
-					<value>mapr</value>
-				</property>
-			</activation>
+
 			<repositories>
 				<repository>
-					<id>mapr-releases</id>
-					<url>http://repository.mapr.com/maven/</url>
-					<snapshots>
-						<enabled>false</enabled>
-					</snapshots>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
+					  <id>my-internal-site</id>
+					<url>http://maven.apache.org</url>
 				</repository>
-
 			</repositories>
-			<properties>
-				<hadoop.version>2.7.0-mapr-1707</hadoop.version>
-				<hbase.version>1.1.8-mapr-1710</hbase.version>
-				<spark.version>2.1.0-mapr-1703</spark.version>
-			</properties>
 
-		</profile>
-	</profiles>
+	<description>Spark Client</description>
+
 
 	<dependencies>
 
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_2.11</artifactId>
-			<version>${spark.version}</version>
+			<version>[2.2.0,)</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>log4j</artifactId>
@@ -67,12 +44,12 @@
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-sql_2.11</artifactId>
-			<version>${spark.version}</version>
+			<version>[2.2.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-yarn_2.11</artifactId>
-			<version>${spark.version}</version>
+			<version>[2.2.0,)</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency>
@@ -83,13 +60,13 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.6.3</version>
+			<version>2.9.9</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
-			<scope>test</scope>
+			<!--scope>test</scope-->
 		</dependency>
 		
 		<!--  POWER MOCKITO DEPENDENCIES START -->
@@ -126,7 +103,7 @@
     	<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.10</version>
+			<version>3.8.1</version>
 		</dependency>
     	
 	</dependencies>
