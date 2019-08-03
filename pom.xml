@@ -36,7 +36,7 @@
 			<properties>
 				<hadoop.version>2.7.0-mapr-1707</hadoop.version>
 				<hbase.version>1.1.8-mapr-1710</hbase.version>
-				<spark.version>2.1.0-mapr-1703</spark.version>
+				<spark.version>2.4.3</spark.version>
 			</properties>
 
 		</profile>
